@@ -12,6 +12,8 @@ import cors from "cors";
 
 const app = express();
 
+const port=process.env.PORT || 3001
+
 
 // Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -28,8 +30,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(process.env.PORT, () =>
-      console.log(`Listening at 5000`)
+    app.listen(port, () =>
+      console.log(`Listening at ${port}`)
     )
   )
   .catch((error) => console.log(error));
@@ -40,3 +42,7 @@ app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
 app.use('/post', PostRoute)
 app.use('/upload', UploadRoute)
+
+app.use("/",(req,res)=>{
+  res.send("Hello World")
+})

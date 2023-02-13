@@ -30,7 +30,9 @@ export const getPost = async (req, res) => {
 
 // update post
 export const updatePost = async (req, res) => {
+  
   const postId = req.params.id;
+
   const { userId } = req.body;
 
   try {
